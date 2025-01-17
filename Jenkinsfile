@@ -7,7 +7,9 @@ pipeline {
     stages {
         stage('Setup') {
             steps {
-                sh "pip3 install -r requirements.txt"
+                sh '''
+		source /venv/bin/activate
+		pip3 install -r requirements.txt
             }
         }
         stage('Test') {
