@@ -36,7 +36,8 @@ pipeline {
                     sh '''
                     scp -i $MY_SSH_KEY -o StrictHostKeyChecking=no myapp.zip ${username}@${SERVER_IP}:/home/ubuntu/
                     ssh -i $MY_SSH_KEY -o StrictHostKeyChecking=no ${username}@${SERVER_IP} << EOF
-			./deploy_app.sh
+			 unzip -o /home/ubuntu/myapp.zip -d /home/ubuntu/to-do-app/
+			./home/ubuntu/to-do-app/deploy_app.sh
 EOF
                     '''
                 }
