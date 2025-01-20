@@ -25,7 +25,7 @@ pipeline {
 
         stage('Package code') {
             steps {
-                sh "zip -r myapp.zip ./* -x '*.git*'"
+                sh "zip -r myapp.zip ./* -x '*.git*' -x 'venv/*'"
                 sh "ls -lart"
             }
         }
@@ -36,11 +36,7 @@ pipeline {
                     sh '''
                     scp -i $MY_SSH_KEY -o StrictHostKeyChecking=no myapp.zip ${username}@${SERVER_IP}:/home/ubuntu/
                     ssh -i $MY_SSH_KEY -o StrictHostKeyChecking=no ${username}@${SERVER_IP} << EOF
-                        unzip -o /home/ubuntu/myapp.zip -d /home/ubuntu/to-do-app/
-                        . to-do-app/venv/bin/activate
-                        cd /home/ubuntu/to-do-app/
-                        pip install -r requirements.txt
-                        sudo systemctl restart flaskapp.service
+			./deploy_app.sh
 EOF
                     '''
                 }
