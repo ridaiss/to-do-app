@@ -6,9 +6,6 @@ DIRECTORY_HOME="/home/${HOSTNAME}"
 DIRECTORY_APP="${DIRECTORY_HOME}/${APP_NAME}"
 DIRECTORY_VENV="${DIRECTORY_APP}/venv"
 
-# Unpackage the app
-unzip -o "${DIRECTORY_HOME}/myapp.zip" -d "$DIRECTORY_APP"
-
 # Changing directory
 cd "$DIRECTORY_APP"
 
