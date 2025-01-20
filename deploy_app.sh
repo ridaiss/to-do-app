@@ -1,8 +1,7 @@
 #!/bin/bash
 
 APP_NAME="to-do-app"
-HOSTNAME=$(hostname)
-DIRECTORY_HOME="/home/${HOSTNAME}"
+DIRECTORY_HOME="/home/${USER}"
 DIRECTORY_APP="${DIRECTORY_HOME}/${APP_NAME}"
 DIRECTORY_VENV="${DIRECTORY_APP}/venv"
 
